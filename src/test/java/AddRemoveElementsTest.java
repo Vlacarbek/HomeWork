@@ -6,10 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
 
-
-public class HomeWork_a {
+public class AddRemoveElementsTest {
 
     WebDriver driver;
 
@@ -17,19 +15,18 @@ public class HomeWork_a {
     public void setup() {
         driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
+
     }
 
     @Test
-    public void Quest_a() {
-
+    public void AddRemoveElementsTest() {
         driver.findElement(By.xpath("//button[text()='Add Element']")).click();
         driver.findElement(By.xpath("//button[text()='Add Element']")).click();
-
         driver.findElement(By.xpath("//button[text()='Delete']")).click();
-
         int quantityDeleteButtons = driver.findElements(By.xpath("//button[text()='Delete']")).size();
         Assert.assertEquals(quantityDeleteButtons, 1, "Количество кнопок 'Delete' должно быть 1");
     }
+
     @AfterMethod(alwaysRun = true)
     public void quit() {
         driver.quit();
